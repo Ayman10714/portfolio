@@ -41,7 +41,7 @@ export const projects: Project[] = [
     description:
       'Voice assistant exposing commands and responses via a REST API, with endpoints for natural-language input and structured JSON output.',
     stack: 'Python · REST APIs · Voice Recognition',
-    repoLink: 'https://github.com/Ayman10714',
+    repoLink: 'https://github.com/Ayman10714/Jarvis-REST-API',
   },
   {
     title: 'AI Chat Reply Box',
