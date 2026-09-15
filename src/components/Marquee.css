@@ -1,0 +1,65 @@
+.marquee-section {
+  position: relative;
+  background: #000;
+  overflow: hidden;
+  padding: 48px 0;
+}
+
+.marquee-frame {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 90px;
+  height: 90px;
+  z-index: 2;
+  pointer-events: none;
+  background-image: url('/nether-portal-nobg.png');
+  background-size: 300% auto;
+  background-position: 50% center;
+  background-repeat: no-repeat;
+}
+
+.marquee-frame--left { left: -12px; }
+.marquee-frame--right { right: -12px; }
+
+.is--reversed-marquee .marquee-frame--left { left: auto; right: -12px; }
+.is--reversed-marquee .marquee-frame--right { right: auto; left: -12px; }
+
+.marquee-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  top: -3px;
+}
+
+.marquee-row {
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee--textwrapper-hold {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 22s linear infinite;
+  font-family: var(--font-display);
+  font-size: clamp(0.85rem, 1.6vw, 1.15rem);
+  line-height: 1;
+  color: var(--color-ink-dim);
+  white-space: nowrap;
+  gap: 0;
+}
+
+.marquee-row.reverse .marquee--textwrapper-hold {
+  animation-name: marquee-right;
+}
+
+@keyframes marquee-left {
+  from { transform: translateX(0%); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0%); }
+}

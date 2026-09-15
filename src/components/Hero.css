@@ -1,0 +1,297 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 20%, #1a1a22 0%, var(--color-bg) 70%);
+}
+
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.hero-reveal-img {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(80vw, 750px);
+  height: 170%;
+  background-size: contain;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.is-loaded .hero-reveal-img--base {
+  opacity: 1;
+}
+
+.hero-reveal-img--flame {
+  -webkit-mask-image: radial-gradient(
+    circle 220px at var(--x, 50%) var(--y, 50%),
+    black 0%, black 55%, transparent 100%
+  );
+  mask-image: radial-gradient(
+    circle 220px at var(--x, 50%) var(--y, 50%),
+    black 0%, black 55%, transparent 100%
+  );
+}
+
+.is-loaded .hero-reveal-img--flame {
+  opacity: 1;
+}
+
+.hero-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #16161c 25%, #1f1f28 37%, #16161c 63%);
+  background-size: 400% 100%;
+  animation: pulse-skeleton 1.4s ease infinite;
+}
+
+@keyframes pulse-skeleton {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-bigname {
+  position: absolute;
+  bottom: -0.08em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 18vw, 13rem);
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(242, 241, 236, 0.14);
+  letter-spacing: 0.02em;
+  -webkit-user-select: none;
+  user-select: none;
+  z-index: 0;
+  white-space: nowrap;
+}
+
+.hero-badges {
+  position: absolute;
+  top: 38%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 1;
+}
+
+.hero-badges--left {
+  left: clamp(24px, 6vw, 96px);
+  align-items: flex-start;
+}
+
+.hero-badges--right {
+  right: clamp(24px, 6vw, 96px);
+  align-items: flex-end;
+}
+
+.hero-badge {
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(55, 230, 255, 0.25);
+  background: rgba(17, 17, 20, 0.55);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  color: var(--color-ink-dim);
+  font-size: 1.05rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: badgeIn 0.6s ease forwards, badgeFloat 5s ease-in-out infinite 1.2s;
+}
+
+.hero-signature {
+  position: absolute;
+  bottom: 24px;
+  right: clamp(24px, 6vw, 96px);
+  z-index: 2;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-dim);
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+.hero-signature {
+  position: absolute;
+  bottom: 24px;
+  right: clamp(24px, 6vw, 96px);
+  z-index: 2;
+  font-family: var(--font-body);
+  font-size: 1.00rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-dim);
+  opacity: 7.00;
+  white-space: nowrap;
+}
+.hero-logo {
+  position: absolute;
+  top: 2rem;
+  left: 1rem;
+  z-index: 50;
+}
+
+.hero-logo img {
+  height: 110px;
+  width: auto;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .hero-signature {
+    font-size: 0.7rem;
+    bottom: 16px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-signature {
+    font-size: 0.7rem;
+    bottom: 16px;
+    right: 20px;
+  }
+}
+@keyframes badgeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes badgeFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@media (max-width: 900px) {
+  .hero-badges { display: none; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-heading {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  line-height: 1.25;
+  margin: 0 0 20px;
+  max-width: 700px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.word-reveal {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100%);
+  animation: wordReveal 0.6s ease forwards;
+}
+
+@keyframes wordReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cta-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 10px 10px 22px;
+  border-radius: 999px;
+  background: var(--color-ink);
+  color: var(--color-bg);
+  font-weight: 600;
+  font-size: 0.95rem;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.cta-button--corner {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  z-index: 3;
+}
+
+.cta-button__fill {
+  position: absolute;
+  inset: 0;
+  background: var(--color-cyan);
+  transform: translateX(-100%);
+  transition: transform 0.35s ease-out;
+  z-index: -1;
+}
+
+.cta-button:hover .cta-button__fill,
+.cta-button:focus-visible .cta-button__fill {
+  transform: translateX(0);
+}
+
+.cta-button__text {
+  transition: color 0.3s ease-out;
+}
+
+.cta-button:hover .cta-button__text,
+.cta-button:focus-visible .cta-button__text {
+  color: #05161a;
+}
+
+.cta-button__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-cyan);
+  color: #05161a;
+  transition: transform 0.3s ease-out, background 0.3s ease-out, color 0.3s ease-out;
+}
+
+.cta-button:hover .cta-button__icon,
+.cta-button:focus-visible .cta-button__icon {
+  transform: translateX(4px);
+  background: var(--color-bg);
+  color: var(--color-cyan);
+}
+
+@media (max-width: 640px) {
+  .hero-content { padding-bottom: 40px; padding-left: 20px; padding-right: 20px; }
+  .hero-bigname { -webkit-text-stroke: 1px rgba(242, 241, 236, 0.1); }
+  .hero-reveal-img { width: min(78vw, 380px); height: 110%; }
+  .cta-button--corner { top: 20px; right: 20px; }
+  .cta-button--corner .cta-button__text { display: none; }
+  .cta-button--corner { padding: 8px; }
+  .cta-button--corner .cta-button__icon { width: 28px; height: 28px; }
+}

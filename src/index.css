@@ -1,0 +1,73 @@
+:root {
+  --color-bg: #0a0a0d;
+  --color-bg-raised: #111114;
+  --color-ink: #f2f1ec;
+  --color-ink-dim: #a9a8b3;
+  --color-cyan: #37e6ff;
+  --color-cyan-dim: #1b7d8c;
+  --color-purple: #9b3ff0;
+  --color-purple-dim: #4a1d80;
+  --color-amber: #ffb84d;
+  --font-display: 'Silkscreen', monospace;
+  --font-body: 'Space Grotesk', system-ui, sans-serif;
+  --radius-card: 18px;
+  --max-width: 1120px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+::selection {
+  background: var(--color-cyan);
+  color: #05161a;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 3px;
+}
